@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SimpleShop</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f5f5f5;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li {
+            margin: 0 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 10px;
+        }
+        .section {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .product {
+            display: inline-block;
+            width: 180px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+        }
+        button {
+            background: #2c3e50;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+  document.querySelectorAll(".section").forEach((section) => {
+    section.classList.remove("active");
+  });
+  document.getElementById(sectionId).classList.add("active");
+}
+
+function validateLogin() {
+  let valid = true;
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  document.getElementById("loginEmailError").textContent = "";
+  document.getElementById("loginPasswordError").textContent = "";
+
+  if (!email) {
+    document.getElementById("loginEmailError").textContent =
+      "email is required";
+    valid = false;
+  }
+  if (!password) {
+    document.getElementById("loginPasswordError").textContent =
+      "password is required";
+    valid = false;
+  }
+
+  if (valid) {
+    alert("login successful!");
+  }
+}
+
+function validateRegister() {
+  let valid = true;
+  const name = document.getElementById("regName").value;
+  const email = document.getElementById("regEmail").value;
+  const password = document.getElementById("regPassword").value;
+
+  document.getElementById("regNameError").textContent = "";
+  document.getElementById("regEmailError").textContent = "";
+  document.getElementById("regPasswordError").textContent = "";
+
+  if (!name) {
+    document.getElementById("regNameError").textContent = "name is required";
+    valid = false;
+  }
+  if (!email) {
+    document.getElementById("regEmailError").textContent = "email is required";
+    valid = false;
+  }
+  if (!password || password.length < 6) {
+    document.getElementById("regPasswordError").textContent =
+      "password must be at least 6 characters";
+    valid = false;
+  }
+
+  if (valid) {
+    alert("registration successful!");
+  }
+}
+    </script>
+</head>
+<body>
+<nav>
+    <ul>
+      <li><a href="#" onclick="showSection('home')">Home</a></li>
+      <li><a href="#" onclick="showSection('products')">Products</a></li>
+      <li><a href="#" onclick="showSection('login')">Login</a></li>
+      <li><a href="#" onclick="showSection('register')">Register</a></li>
+      <li><a href="#" onclick="showSection('about')">About & Contact</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+  <div id="home" class="section active">
+    <h2>welcome to abijeethazon</h2>
+    <p>your simple online shopping destination</p>
+  </div>
+
+  <div id="products" class="section">
+    <h2>products</h2>
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="product 1" />
+      <h3>phone</h3>
+      <p>$299</p>
+      <button>add to cart</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="product 2" />
+      <h3>headphones</h3>
+      <p>$49</p>
+      <button>add to cart</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="product 3" />
+      <h3>watch</h3>
+      <p>$199</p>
+      <button>add to cart</button>
+    </div>
+  </div>
+
+  <div id="login" class="section">
+    <h2>login</h2>
+    <input type="email" id="loginEmail" placeholder="email" />
+    <div id="loginEmailError" class="error"></div>
+    <input type="password" id="loginPassword" placeholder="password" />
+    <div id="loginPasswordError" class="error"></div>
+    <button onclick="validateLogin()">login</button>
+  </div>
+
+  <div id="register" class="section">
+    <h2>register</h2>
+    <input type="text" id="regName" placeholder="full name" />
+    <div id="regNameError" class="error"></div>
+    <input type="email" id="regEmail" placeholder="email" />
+    <div id="regEmailError" class="error"></div>
+    <input type="password" id="regPassword" placeholder="password" />
+    <div id="regPasswordError" class="error"></div>
+    <button onclick="validateRegister()">register</button>
+  </div>
+
+  <div id="about" class="section">
+    <h2>about us</h2>
+    <p>abijeethazon - making online shopping easy since 1999</p>
+
+    <h2>contact us</h2>
+    <p>email: abijeethazon@gamil.com</p>
+    <p>phone: 98989898989</p>
+    <h3>customer care</h3>
+    <p>24/7 support available</p>
+  </div>
+</div>
+</body> 
+</html>
